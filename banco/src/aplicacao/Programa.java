@@ -9,21 +9,24 @@ public class Programa {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("Nome do proprietario: ");
-		String nome = scanner.nextLine();
-		
 		System.out.print("Número da conta: ");
 		int numeroConta = scanner.nextInt();
+		
+		System.out.print("Nome do proprietario: ");
+		scanner.nextLine();
+		String nome = scanner.nextLine();
 		
 		System.out.print("Deseja fazer um depósito incial na sua conta? (s/n) ");
 		char esc = scanner.next().charAt(0);
 		double saldo;
 		
+		Conta conta;
+		
 		if(esc == 's') {
 			System.out.print("Qual o valor de depórito? ");
 			saldo = scanner.nextDouble();
 			
-			Conta conta = new Conta(numeroConta, nome, saldo);
+			conta = new Conta(numeroConta, nome, saldo);
 			System.out.println();
 			System.out.println(conta.toString());
 			System.out.println("\nDeseja fazer um depósito? (s/n) ");
@@ -33,7 +36,7 @@ public class Programa {
 				
 				System.out.print("Valor de depósito R$: ");
 				double deposito = scanner.nextDouble();
-				conta.setSaldo(deposito);
+				conta.deposito(deposito);
 				
 				System.out.print("\nDeseja ver os dados da conta atualizados? (s/n) ");
 				esc = scanner.next().charAt(0);
@@ -65,7 +68,7 @@ public class Programa {
 			
 			
 		}else {
-			Conta conta = new Conta(numeroConta, nome);
+			conta = new Conta(numeroConta, nome);
 			System.out.println();
 			System.out.println(conta.toString());
 			
@@ -76,7 +79,7 @@ public class Programa {
 				
 				System.out.print("Valor de depósito R$: ");
 				double deposito = scanner.nextDouble();
-				conta.setSaldo(deposito);
+				conta.deposito(deposito);
 				
 				System.out.print("\nDeseja ver os dados da conta atualizados? (s/n) ");
 				esc = scanner.next().charAt(0);
